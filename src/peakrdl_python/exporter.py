@@ -90,6 +90,7 @@ class PythonExporter:
         self.node_type_name = {}
 
     def export(self, node: Node, path: str,
+               asyncoutput: bool=False,
                autoformatoutputs: bool=True,
                skip_test_case_generation: bool=False) -> List[str]:
         """
@@ -101,6 +102,7 @@ class PythonExporter:
             path (str) : Output package path.
             autoformatoutputs (bool) : If set to True the code will be run through autopep8 to
                 clean it up. This can slow down large jobs or mask problems
+            asyncoutput (bool) : If set this builds a register model with async callbacks
             skip_test_case_generation (bool): skip generation the generation of the test cases
 
         Returns:
@@ -133,6 +135,7 @@ class PythonExporter:
                 'systemrdlMemNode': MemNode,
                 'systemrdlAddressableNode': AddressableNode,
                 'systemrdlSignalNode': SignalNode,
+                'asyncoutput': asyncoutput,
                 'OnWriteType': OnWriteType,
                 'OnReadType': OnReadType,
                 'PropertyReference': PropertyReference,
