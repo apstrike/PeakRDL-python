@@ -742,7 +742,11 @@ class PythonExporter:
                 cand_type_name = get_fully_qualified_type_name(child_node)
             if cand_type_name in self.node_type_name.values():
                 if child_node == node:
-                    raise RuntimeError(f'Top Node name {cand_type_name} already used by instance {list(self.node_type_name.keys())[list(self.node_type_name.values()).index(cand_type_name)]}')
+                    raise RuntimeError(
+                        f'Top Node name {cand_type_name} already used by instance \
+                        {list(self.node_type_name.keys()) \
+                        [list(self.node_type_name.values()).index(cand_type_name)]}'
+                    )
                 self.node_type_name[child_inst] = cand_type_name + '_0x' + hex(hash(child_inst))
             else:
                 self.node_type_name[child_inst] = cand_type_name
